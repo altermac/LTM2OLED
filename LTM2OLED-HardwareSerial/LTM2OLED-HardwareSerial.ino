@@ -3,7 +3,6 @@
   Copyright (c) 2023 altermac (MIT Licence)
 */
 #include "LTM2OLED.h"
-//#define LTM_RXPIN 17  // default GPIO 14, uncomment and change when needed
 #include "LTMReader.h"
 
 LTM2OLED OLED;
@@ -12,8 +11,9 @@ long nextdisplay=0;
 
 void setup() 
 {
+  Serial.begin(9600);
   // Articicial Horizon 
-  OLED.init();
+  OLED.init(6,7);
   // Telemetry initialize
   TData.init();
   delay(500);
@@ -24,7 +24,7 @@ void loop()
   TData.update();
   if (millis()>nextdisplay) 
   {
-    OLED.dashboard(TData);  // Dashboard with western artificial horizon
+    OLED.dashboard(TData);  // Dashboard 
     nextdisplay=millis()+1000;
   };
   yield(); // let the ESP8266 do some unrelated things

@@ -29,7 +29,7 @@ void loop()
 void dump2Serial()
 {
   Serial.print("*** ");
-  if(TData.ltm_update) {Serial.print(" updated ");}
+  if(TData.ltm_update) {Serial.print(" updated ");} else {Serial.print(" NO updates so far ");} 
   Serial.println(" ***");
   Serial.print ("  Pitch: ");
   Serial.print (TData.pitch);

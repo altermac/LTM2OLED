@@ -10,7 +10,7 @@
 class LTM2OLED 
 {
   public: 
-  void init();
+  void init(int pinSDA = SDA, int pinSCL = SCL);
   void dashboard(LTMReader& TData);
 
   private:
