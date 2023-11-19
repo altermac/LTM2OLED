@@ -1,8 +1,7 @@
 /* 
   LTM Reader Class
   Copyright (c) 2023 altermac (MIT Licence)
-  LTM based on https://github.com/KipK/Ghettostation/blob/master/GhettoStation/LightTelemetry.cpp implementation
-  and parts of ltm_telemetry_reader https://github.com/DzikuVx/ltm_telemetry_reader
+  LTM based on GitHub\inav\src\main\telemetry\LTM.h and LTM.c
 */
 #ifndef _LTMReader_
 #define _LTMReader_
@@ -23,28 +22,30 @@ static const char* windrose[17]  {
   "W","WNW","NW","NNW","N"
 };
 
-// Flightmodes von Ardupilot?
+// Flightmodes for INAV: Modes not commented with inav are not used.
 static const char* flightModes[] = {
-  "Manual", // inav checked
-  "Acro", // inav checked
-  "Angle", // inav checked
-  "Horizon", // inav checked
+  "Manual", // inav 
+  "Acro", // inav (was "Rate") This is 'catch all' for everything else
+  "Angle", // inav 
+  "Horizon", // inav 
   "Acro",
   "Stabilized1",
   "Stabilized2",
   "Stabilized3",
-  "Altitude Hold",
-  "GPS Hold",
-  "Waypoints",
-  "Head free",
+  "Altitude Hold", // inav
+  "NAV Loiter" // inav (was "GPS Hold")
+  "NAV WP", // inav (was "Waypoints")
+  "Heading Hold", // inav (was "Heading free")
   "Circle",
-  "RTH",
+  "NAV RTH", // inav (was "RTH")
   "Follow me",
   "Land",
   "Fly by wire A",
   "Fly by wire B",
-  "Cruise",
-  "Unknown"
+  "NAV Cruise", // inav (was "Cruise")
+  "Unknown",
+  "Launchmode", // inav
+  "Autotune" // inav
 };
 
 class LTMReader {
